@@ -1,0 +1,19 @@
+name: CI
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+jobs:
+  test:
+    name: Run tests
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        python-version: ["3.9", "3.10"]
+    steps:
+      - name: Test Python ${{ matrix.python-version }}
+        uses: collective/tox-action@main
+        with:
+          python-version: ${{ matrix.python-version }}
