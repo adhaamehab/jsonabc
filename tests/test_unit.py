@@ -8,7 +8,7 @@ class Person(metaclass=JSONABC):
     address: str
 
 
-def test_case_1():
+def test_simple():
     data = {"name": "John", "age": 30, "address": "123 Main St"}
     person = Person(data)
     assert person.name == "John"
