@@ -32,7 +32,7 @@ obj = Response(response)
 
 # obj attributes now have their correspondent values from our json data.
 # you can also convert your class back to its json form.
-# JSONABC will preserve the same names for the original json and converge to it.
+# JSONABC will preserve the same names for the original json keys.
 print(obj.json())
 
 ```
@@ -61,3 +61,9 @@ obj = Response(response)
 obj.headers 
 
 ```
+
+
+## TODO
+
+- [ ] Add Spec Testing
+- [ ] `json()` to preserve original json keys.
