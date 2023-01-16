@@ -26,13 +26,18 @@ class JSONABC(ABCMeta):
                 raise TypeError(f"Missing: {missing}")
 
         def json(self, rename=lambda k: k):
-            d =  self.__dict__
-            for key, value in d.items():
-                new_key = rename(key)
-                if isinstance(type(value),JSONABC):
-                    d[new_key] = value.json()
-                    del d[key]
-            return d        
+            """Returns a dictionary version of the of the object.
+            
+            After running `rename` on the keys.
+            """
+            schema = self.__annotations__.copy()
+            data = {}
+            for key, value in schema.items():
+                if type(value) is JSONABC:
+                    data[rename(key)] = getattr(self, key).json()
+                else:
+                    data[rename(key)] = getattr(self, key)
+            return data
         
         attrs["__init__"] = __init__
         attrs["json"] = json
