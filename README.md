@@ -61,9 +61,3 @@ obj = Response(response)
 obj.headers 
 
 ```
-
-
-## TODO
-
-- [ ] Add Spec Testing
-- [ ] `json()` to preserve original json keys.
